@@ -1,38 +1,406 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,700');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.desktop{
+  background-image: url('./img/desktop.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 95vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  transition: all 2s ease-in-out;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.defaultIcon{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 5px;
+}
+.defaultIcon img{
+  /* grid-area: 1 / 1 / 2 / 2;
+  width: 100%;
+  max-height: 100%;
+  padding: 20px; */
+  text-align: center;
+}
+.defaultIcon p{
+  color: white;
+  filter: drop-shadow(1px 1px 1px black);
+  padding-left: 5px;
+  white-space: nowrap;
+  cursor: default;
+}
+.setBlue{
+  background-color: blue;
+}
+.focusedIcon{
+  opacity: 0.7;
+}
+/* .defaultIcon:hover{
+  cursor: pointer;
+} */
+
+.startMenu{
+  height: 5vh;
+  width: 100vw;
+  background: linear-gradient(0deg, rgba(22,62,187,1) 0%, rgba(22,62,187,1) 89%, rgba(137,164,247,1) 100%);
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+}
+.startBtn{
+  /* position: absolute; */
+  /* left: 0;
+  bottom: 0; */
+  width: auto;
+  height: 5vh;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: linear-gradient(0deg, rgba(108,171,41,1) 0%, rgba(108,171,41,1) 90%, rgba(158,245,160,1) 99%);  padding: 5px;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  /* cursor: pointer; */
+}
+.flagStart{
+  background-size: cover;
+  height: 100%;
+  filter: drop-shadow(2px 2px 4px #000000);
+}
+.flagText{
+  padding: auto;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  filter: drop-shadow(2px 2px 4px #000000);
+  font-size: 1.1rem;
+  padding-left: 2px;
+}
+
+.menuClock{
+  /* position: absolute; */
+  right: 0;
+  bottom: 0;
+  color: black;
+  height: 5vh;
+  width: auto;
+  color: white;
+  background: linear-gradient(0deg, rgba(113,193,215,1) 0%, rgba(113,193,215,1) 94%, rgba(255,255,255,1) 100%);
+  /* width: 6%; */
+  border-left: 1px solid rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 3px;
+  cursor: default;
+}
+.menuClock p{
+  padding-right: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  filter: drop-shadow(1px 1px 1px #000000);
+  font-size: 0.9rem;
+}
+.menuClockImg{
+  /* width: 18px; */
+  width: auto;
+  height: 18px;
+  margin-right: 5px;
+}
+
+/* LOADER */
+.window{
+  /* position: absolute; */
+  /* top: 50%;
+  left: 50%; */
+  /* margin-right: -50%; */
+  /* transform: translate(-50%, -50%); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #000; 
+  font-family: 'Roboto', sans-serif; 
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+}
+.container{
+  width: 150px;
+  height: 20px;
+  border: 2px solid #b2b2b2;
+  border-radius: 7px;
+  /* margin: 0 auto; */
+  padding: 2px 1px;
+  overflow: hidden;
+  font-size: 0;
+}
+.box{
+  width: 9px;
+  height: 100%;
+  background: linear-gradient(to bottom, #2838c7 0%,#5979ef 17%,#869ef3 32%,#869ef3 45%,#5979ef 59%,#2838c7 100%);
+  display: inline-block;
+  margin-right: 2px;
+  animation: loader 2s infinite;
+  animation-timing-function: linear;
+}
+.logo{
+  max-width: 300px;
+  margin: 50px auto;
+}
+.logo p{
+  margin: 0;
+  padding: 0;  
+  white-space: nowrap;
+  margin: 1.5rem 0;
+}
+.top{
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 16px;
+}
+.top:after{
+  content:"\00a9";
+  font-size: 20px;
+  position: relative;
+  top: -5px;
+  margin-left: 2px;
+}
+.mid{
+  font-size: 92px;
+  font-weight: 700;
+  line-height: 36px;  
+}
+.mid span{
+  font-size: 44px;
+  display: inline-block;
+  vertical-align: top;
+  color: #FF6821;
+  margin-top: -8px;
+}
+.logo .bottom{
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 30px;
+  margin-left: 5px;
+  
+}
+@keyframes loader{
+  0%{
+    transform: translate(-30px);
+  }
+  100%{
+    transform: translate(150px);
+  }
+}
+
+/* Start Menu */
+.openedStartMenu{
+  position: absolute;
+  bottom: 5vh;
+  width: 400px;
+  height: 530px;
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 3px 2px 5px black;
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.headerStart{
+  background: linear-gradient(0deg, rgba(52,119,200,1) 0%, rgba(30,93,205,1) 39%, rgba(30,93,205,1) 97%, rgba(244,245,255,1) 100%);
+  height: 12vh;  
+}
+.userIcon{
+  text-align: left;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgb(63, 61, 61);
+}
+.userIcon img{
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid white;
+}
+.userIcon p{
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  filter: drop-shadow(1px 1px 1px black);
+  padding-left: 0.7rem;
+  cursor: default;
+}
+.iconsStart{
+  /* display: none; */
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+.leftSide{
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  height: 100%;
+  width: 50%;
+}
+.firstOnSide{
+  height: 20%;
+}
+.secondOnSide{
+  height: 50%;
+}
+.thirdOnLine{
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}
+.smallIcon{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  cursor: default;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  padding: 1px 5px;
+  white-space: break-spaces;
+}
+.smallIcon img{
+  width: 30px;
+  height: 30px;
+}
+.smallIcon:hover{
+  background-color: rgba(52,119,200,1);
+  color: white;
+  border-radius:3px;
+}
+.rightSide{
+  height: 100%;
+  width: 50%;
+  background-color: #B9D9EB;
+}
+.bottomLine{
+  height: 1px;
+  width: 90%;
+  background-color: grey;
+  opacity: 0.5;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.allPrograms{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: default;
+  padding: 0 10px;
+}
+.allPrograms b{
+  color: rgb(24, 166, 24);
+  font-size: 1.5rem;
+  filter: drop-shadow(2px 2px 2px green);
+  padding: 3px;
+}
+.allPrograms:hover{
+  background-color: rgba(52,119,200,1);
+  color: white;
+  border-radius:3px;
+}
+.footerStart{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  height: 8vh;
+  width: 100%;
+  background: linear-gradient(10deg, rgba(30,93,205,1) 0%, rgba(30,93,205,1) 43%, rgba(52,119,200,1) 70%);
+  font-size: 0.8rem;
+}
+.bottomStartBtn{
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  cursor: default;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.bottomStartBtn img{
+  height: 35px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bottomStartBtn:hover{
+  opacity: 0.8;
+}
+.emptyWindow{
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgba(30,93,205,1);
+  position: absolute;  
+  left: 100%;
+  top: 21.5%;
+  font-size: 0.8rem;
+  border-left: 5px solid rgba(30,93,205,1);
+  box-shadow: 2px 2px 2px black;
+  cursor: default;
+}
+.emptyWindow:hover{
+  background-color: rgba(30,93,205,1);
+  color: white;
+}
+.allProgramsOpened{
+  position: absolute;
+  left: 40%;
+  bottom: 10%;
+  background-color: white;
+  border-left: 4px solid rgba(30,93,205,1);
+  padding: 5px;
+}
+.littleIconApp{
+  display: flex;
+  align-items: center;
+  margin: 5px 3px;
+  white-space: nowrap;
+  cursor: default;
+  padding: 3px 5px;
+}
+.nameIconAll{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.littleIconApp img{
+  height: 18px;
+  margin-right: 5px;
+}
+.littleIconApp p{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 0.7rem;
+}
+.littleIconApp:hover{
+  background-color: rgba(30,93,205,1);
+}
+.accesPrograms{
+  position: absolute;
+  left: 92%;
+  bottom: 56%;
+  height: auto;
+  background-color: white;
+  border-left: 4px solid rgba(30,93,205,1);
 }
