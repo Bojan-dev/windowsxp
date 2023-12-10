@@ -1,4 +1,4 @@
-export default function SmallIcon({ name, img, description, handleHover, handleLeave }) {
+export function SmallIcon({ name, img, description, handleHover, handleLeave }) {
     return (
       <div
         className="smallIcon"

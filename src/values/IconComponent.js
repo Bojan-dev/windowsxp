@@ -8,6 +8,9 @@ export default function Icon({
     img = newfolder,
     focused,
     handleClick,
+    windowOpen,
+    windowNum,
+    addNumber
   }) {
     //STOP REACTING PARENT COMPONENT WHEN CLICKED ON CHILD COMPONENT
     function handleFocused(e) {
@@ -26,6 +29,11 @@ export default function Icon({
         className="defaultIcon"
         style={{ gridArea: grid }}
         onClick={handleFocused}
+        onDoubleClick={()=>{
+          windowOpen(true)
+          // windowNum()
+          addNumber()
+        }}
       >
         <img
           src={img}
