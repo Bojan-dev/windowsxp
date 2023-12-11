@@ -16,7 +16,7 @@ function App() {
     const newArr = [...windowNum,newElement];
     setWindowNum(newArr);
   }
-  console.log(windowNum)
+
   function closeWindow(index){
     const newArr = windowNum.filter(num=>num !== index);
     setWindowNum(newArr)

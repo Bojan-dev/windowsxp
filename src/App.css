@@ -544,7 +544,7 @@
 }
 .openedWindow{
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   width: 800px;
@@ -878,4 +878,7 @@
   border-bottom: 2px solid rgb(0, 82, 214);
   border-right: 2px solid rgb(0, 82, 214);
   border-left: 2px solid rgb(0, 82, 214);
+}
+.zFocusedIndex{
+  z-index: 100;
 }

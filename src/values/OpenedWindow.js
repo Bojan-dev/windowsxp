@@ -19,9 +19,9 @@ import harddisk from '../img/harddisk.png';
 import localdisk from '../img/localdisk.png';
 
 
-export function OpenedWindow({img=mycomputer, text='My Computer', windowOpened, closeWindow}){
+export function OpenedWindow({img=mycomputer, text='My Computer', windowOpened, closeWindow, zIndexNum}){
     return (
-        <div className="openedWindow">
+        <div className={`openedWindow + ${zIndexNum === 2 ? "zFocusedIndex" : null}`}>
               <div className="windowHeader">
                 <div className="leftSideOpen">
                     <img src={img} />

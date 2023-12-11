@@ -5,6 +5,7 @@ import { StartMenu } from "./StartMenu";
 import { windowsIcons } from "./Icon";
 import { OpenedWindow } from "./OpenedWindow";
 import { OpenedExplorer } from "./OpenedExplorer";
+import SquareDrawer from "./SquareDrawer";
 
 import turnoff from "../img/turnof.png";
 import restart from "../img/restart.ico";
@@ -14,8 +15,9 @@ export function Windows({ loaded, openedStartMenu, setOpenedStartMenu, setIsLoad
     const [selectedComponent, setSelectedComponent] = useState(null);
     const [powerON, setPowerON] = useState(false);
     const [windowForTurnOff, setWindowForTurnOff] = useState(false);
+    const [zIndexNum, setZIndexNum] = useState();
   
-    // const [isDrawingRec, setIsDrawingRec] = useState(false);
+    const [isDrawingRec, setIsDrawingRec] = useState(false);
 
     // const [windowOpened, setWindowOpened] = useState(false);
     // const [windowNum, setWindowNum] = useState(null);
@@ -24,9 +26,20 @@ export function Windows({ loaded, openedStartMenu, setOpenedStartMenu, setIsLoad
   
     const handleClick = (e) => {
       setSelectedComponent(e);
+      setZIndexNum(e);
       setOpenedStartMenu(false);
     };
-  
+
+    const handleMouseDown = (e) =>{
+      if(e.target === document.querySelector('.desktop')){
+        e.preventDefault();
+        setIsDrawingRec(true);
+        setOpenedStartMenu(false);
+        setSelectedComponent(null)
+      }
+    }
+    // cursor:isDrawingRec ? 'crosshair' : 'default'
+
     return (
       <>
       <div
@@ -35,17 +48,17 @@ export function Windows({ loaded, openedStartMenu, setOpenedStartMenu, setIsLoad
           e.stopPropagation();
           handleClick(null);
         }}
-        // onMouseDown={(e) => {setIsDrawingRec(true)}}
-        // onMouseUp={() => {setIsDrawingRec(false)}}
-        // onMouseLeave={() => {setIsDrawingRec(false)}}
-        style={{ opacity: powerON ? 1 : 0, filter:windowForTurnOff ?  'grayscale(100%)' : null}}
+        onMouseDown={(e)=>handleMouseDown(e)}
+        onMouseUp={() => {setIsDrawingRec(false)}}
+        onMouseLeave={() => {setIsDrawingRec(false)}}
+        style={{ opacity: powerON ? 1 : 0, filter:windowForTurnOff ?  'grayscale(100%)' : null,}}
       >
         {windowsIcons.map((icon) => (
-          <Icon  grid={icon.grid} text={icon.text} img={icon.img} key={icon.key} handleClick={()=> handleClick(icon.handle)} focused={selectedComponent === icon.focused} windowOpen={setWindowOpened} addNumber={()=>addNumber(icon.handle)} />
+          <Icon  grid={icon.grid} text={icon.text} img={icon.img} key={icon.key} handleClick={()=> handleClick(icon.handle)} focused={selectedComponent === icon.focused} windowOpen={setWindowOpened} addNumber={()=>addNumber(icon.handle)} setZIndexNum={()=>setZIndexNum(icon.handle)} zIndexNum={zIndexNum} />
           // windowNum={()=>setWindowNum(icon.handle)} 
         ))}
   
-        {/* {isDrawingRec && <SquareDrawer />} */}
+        {isDrawingRec && <SquareDrawer />}
   
         {openedStartMenu && (
           windowForTurnOff ||
@@ -57,8 +70,8 @@ export function Windows({ loaded, openedStartMenu, setOpenedStartMenu, setIsLoad
         )}
       </div>
 
-        {windowOpened && windowNum.includes(2) && <OpenedWindow windowOpened={setWindowOpened} closeWindow={()=>closeWindow(2)} />}
-        {windowOpened && windowNum.includes(4) && <OpenedExplorer windowOpened={setWindowOpened} closeWindow={()=>closeWindow(4)} />}
+        {windowOpened && windowNum.includes(2) && <OpenedWindow windowOpened={setWindowOpened} closeWindow={()=>closeWindow(2)} zIndexNum />}
+        {windowOpened && windowNum.includes(4) && <OpenedExplorer windowOpened={setWindowOpened} closeWindow={()=>closeWindow(4)} zIndexNum />}
 
 
       {windowForTurnOff && 

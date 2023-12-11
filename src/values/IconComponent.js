@@ -10,7 +10,9 @@ export default function Icon({
     handleClick,
     windowOpen,
     windowNum,
-    addNumber
+    addNumber,
+    setZIndexNum,
+    zIndexNum
   }) {
     //STOP REACTING PARENT COMPONENT WHEN CLICKED ON CHILD COMPONENT
     function handleFocused(e) {
@@ -31,6 +33,7 @@ export default function Icon({
         onClick={handleFocused}
         onDoubleClick={()=>{
           windowOpen(true)
+          setZIndexNum()
           // windowNum()
           addNumber()
         }}
